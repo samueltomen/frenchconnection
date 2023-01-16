@@ -13,9 +13,9 @@ class RegisterType extends AbstractType
     {
         $builder
         ->add('firstname')
-        ->add('lastname')
-            ->add('email')// ceci est comme un input
-            ->add('password');
+             ->add('lastname')
+                 ->add('email')// ceci est comme un input
+        ->add('password');
     }
 
     public function configureOptions(OptionsResolver $resolver): void
