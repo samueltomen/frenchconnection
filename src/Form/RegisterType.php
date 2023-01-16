@@ -12,9 +12,10 @@ class RegisterType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('email') // ceci est comme un input
-            ->add('password')
-        ;
+        ->add('firstname')
+        ->add('lastname')
+            ->add('email')// ceci est comme un input
+            ->add('password');
     }
 
     public function configureOptions(OptionsResolver $resolver): void
