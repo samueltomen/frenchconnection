@@ -9,13 +9,15 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class RegisterType extends AbstractType
 {
-    public function buildForm(FormBuilderInterface $builder, array $options): void
-    {
+    public function buildForm(
+        FormBuilderInterface $builder,
+        array $options
+    ): void {
         $builder
-        ->add('firstname')
-             ->add('lastname')
-                 ->add('email')// ceci est comme un input
-        ->add('password');
+            ->add('firstname')
+            ->add('lastname')
+            ->add('email') // ceci est comme un input
+            ->add('password');
     }
 
     public function configureOptions(OptionsResolver $resolver): void
