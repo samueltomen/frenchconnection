@@ -46,7 +46,7 @@ class RegisterType extends AbstractType
             ])
             ->add('password_confirm', PasswordType::class, [
                 'label' => 'Confirmez votre mot de passe',
-                'mapped'=> false, //indique a Symfony que la propriéte ne doit pas lier au formulaire 
+                'mapped'=> false, //indique a Symfony que la propriéte ne doit pas être lier au formulaire 
                 'attr' => ['placeholder' => 'Confirmez votre mot de passe'],
             ])
             ->add('submit', SubmitType::class, [
