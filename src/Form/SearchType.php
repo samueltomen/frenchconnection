@@ -27,7 +27,7 @@ class SearchType extends AbstractType
                 ],
             ])
             # Ajout d'une liste déroulante de catégories à cocher
-            ->add('categories', EntitiesType::class, [
+            ->add('categories', EntityType::class, [
                 'label' => false,
                 'required' => false,
                 'class' => Category::class,
