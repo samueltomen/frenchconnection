@@ -17,6 +17,10 @@ use Doctrine\Persistence\ManagerRegistry;
  */
 class ProductRepository extends ServiceEntityRepository
 {
+    /**
+     * Constructeur qui initialise le dépôt en utilisant le gestionnaire de récupération de données et la classe de produit
+     * @param ManagerRegistry $registry
+     */
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Product::class);
@@ -24,12 +28,12 @@ class ProductRepository extends ServiceEntityRepository
 
     /**
      * Requête qui me permet de recuperer les produit en fonction de la recherche de l'utilisateur
+     * @param Search $search
      * @return Product[]
      */
     public function findWithSearch(Search $search)
     {
-        $query = $this
-            ->createQueryBuilder('p')
+        $query = $this->createQueryBuilder('p')
             ->select('c', 'p')
             ->join('p.category', 'c');
 
@@ -47,6 +51,11 @@ class ProductRepository extends ServiceEntityRepository
         return $query->getQuery()->getResult();
     }
 
+    /**
+     * Enregistrer un produit en base de données
+     * @param Product $entity
+     * @param bool $flush
+     */
     public function save(Product $entity, bool $flush = false): void
     {
         $this->getEntityManager()->persist($entity);
@@ -56,6 +65,11 @@ class ProductRepository extends ServiceEntityRepository
         }
     }
 
+    /**
+     * Supprimer un produit de la base de données
+     * @param Product $entity
+     * @param bool $flush
+     */
     public function remove(Product $entity, bool $flush = false): void
     {
         $this->getEntityManager()->remove($entity);
@@ -64,29 +78,4 @@ class ProductRepository extends ServiceEntityRepository
             $this->getEntityManager()->flush();
         }
     }
-
-    //    /**
-    //     * @return Product[] Returns an array of Product objects
-    //     */
-    //    public function findByExampleField($value): array
-    //    {
-    //        return $this->createQueryBuilder('p')
-    //            ->andWhere('p.exampleField = :val')
-    //            ->setParameter('val', $value)
-    //            ->orderBy('p.id', 'ASC')
-    //            ->setMaxResults(10)
-    //            ->getQuery()
-    //            ->getResult()
-    //        ;
-    //    }
-
-    //    public function findOneBySomeField($value): ?Product
-    //    {
-    //        return $this->createQueryBuilder('p')
-    //            ->andWhere('p.exampleField = :val')
-    //            ->setParameter('val', $value)
-    //            ->getQuery()
-    //            ->getOneOrNullResult()
-    //        ;
-    //    }
 }
